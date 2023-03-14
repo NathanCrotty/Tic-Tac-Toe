@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    overflow: hidden;
+
+    /* In case the background image doesn't load */
+    background-color: rgb(255, 126, 126);
+
+    /* This URL selects a random stock with the dimensions 1080x1080 */
+    background-image: url(https://source.unsplash.com/random/1080x1080);
+    background-size: max(100vh, 100vw) max(100vh, 100vw);
+    
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 80px;
+    margin: 20px;
+}
+
+p {
+    font-size: 35px;
+}
+
+input[type="text"] {
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+
+    color: white;
+    font-size: 30px;
+    
+    height: 35px;
+}
+
+* {
+    transition: all 200ms;
+}
+
+
+
+
+/*
+The #gameboard is made up of the 9 square divs where the game is played.
+*/
+#gameboard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    width: min-content;
+    
+    display: grid;
+    grid-template-columns: repeat(3, min(28vh, 28vw));
+    gap: 25px;
+
+    text-align: center;
+
+}
+
+#gameboard>div {
+    user-select: none;
+    font-family: monospace;
+    font-size: min(28vh, 28vw);
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(180, 180, 180, 0.5);
+    height: min(28vh, 28vw);
+}
+
+#gameboard>div:hover {
+    transform: scale(1.1);
+    content: "X";
+}
+
+
+
+/*
+The "screen" class  is for pop-ups that cover the entire screen such as #names
+which allows users to input their names or #win which announces the winner at
+the end of a game.
+*/
+.screen {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    backdrop-filter: blur(30px);
+    background-color: rgba(0, 0, 0, 0.85);
+
+    color: white;
+    text-align: center;
+}
+
+.screen>div {
+    display: flex;
+    align-items: center;
+}
+
+.screen>button {
+    all: unset;
+
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin: 35px;
+
+    user-select: none;
+    font-size: 35px;
+}
+
+.screen>button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.screen>div>* {
+    display: inline-block;
+    padding: 10px;
+
+}
+
+.tip {
+    position: relative;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+#names {
+    display: flex;
+    z-index: 10;
+}
